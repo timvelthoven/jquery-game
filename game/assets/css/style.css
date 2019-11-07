@@ -1,0 +1,235 @@
+@font-face {
+    font-family: 'Equipment';
+    src: url('../fonts/EquipmentPro.woff2') format('woff2'),
+    url('../fonts/EquipmentPro.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+body {
+    font-family: 'Equipment';
+    font-size: 14px;
+    margin: 0;
+    background: #ab6a8c;
+}
+
+p, span, h1, h2, h3, h4, a {
+    margin: 0;
+    padding: 0;
+}
+
+/* INTRO */
+.background-title {
+    position: relative;
+    background: url("../img/background.png");
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.background-title .title {
+    position: absolute;
+    margin-top: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    z-index: 99;
+}
+
+.background-title .layer-1, .background-title .layer-2, .background-title .layer-3 {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-size: contain !important;
+
+}
+
+.background-title .layer-1 {
+    background: url(../img/moon_1.png);
+}
+
+
+.background-title .layer-2 {
+    background: url(../img/mountain_1.png);
+}
+
+.background-title .layer-3 {
+    background: url(../img/forest_1.png);
+}
+
+.intro-text {
+    position: relative;
+    background: #351f15;
+    color: #deab3b;
+    width: 100%;
+    font-size: 2rem;
+    text-align: center;
+    line-height: 1.2;
+    padding: 10rem 0;
+    z-index: 999;
+}
+
+.intro-text:after {
+    content: "";
+    position: absolute;
+    background-image: url(../img/intro-text-after.png);
+    background-size: 50%;
+    background-repeat: repeat-x;
+    width: 100%;
+    height: 200px;
+    left: 0;
+    top: 100%;
+}
+
+.intro-text p {
+    width: 25%;
+    margin: 0 auto;
+    min-height: 11em;
+    max-height: 11em;
+}
+
+button {
+    font-family: inherit;
+    color: inherit;
+    padding: .75rem 2rem;
+    margin: 2rem 1rem 0;
+    font-size: 1.5rem;
+    position: relative;
+    border: none;
+    background-image: url(../img/button/button-mid.png);
+    background-color: transparent;
+    background-size: contain;
+    cursor: pointer;
+}
+
+button:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    left: 0;
+    top: 0;
+    width: 100%;
+    background-image: url(../img/button/button-left.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: translateX(-10%);
+}
+
+button:after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    background-image: url(../img/button/button-right.png);
+    background-position: right;
+    background-size: contain;
+    background-repeat: no-repeat;
+    transform: translateX(10%);
+}
+
+button:hover {
+    background-image: url(../img/button/button-mid-hover.png);
+}
+
+button:hover:before {
+    background-image: url(../img/button/button-left-hover.png);
+}
+
+button:hover:after {
+    background-image: url(../img/button/button-right-hover.png);
+}
+
+/* */
+
+img {
+    width: 100%;
+}
+
+
+/* GAME */
+
+
+/* HERO */
+#hero {
+    position: absolute;
+    width: calc(350px / 1.5);
+    height: calc(259px / 1.5);
+    background-size: contain;
+    bottom: 90px;
+    z-index: 9;
+    top: 70%;
+}
+
+
+#hero.in-kingdom.walking.idle {
+    background-image: url('../img/adventurer/adventurer_idle.gif');
+}
+
+#hero.in-kingdom.walking {
+    background-image: url('../img/adventurer/adventurer_walking.gif');
+    animation: walk 4000ms forwards;
+    animation-delay: 500ms;
+    right: -200px;
+}
+
+@-webkit-keyframes walk {
+    0% {
+        right: -200px;
+    }
+
+    100% {
+        right: 250px;
+    }
+}
+
+#hero.in-kingdom {
+    transform: scaleX(-1);
+}
+
+/* KINGDOM */
+
+.game {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.game .kingdom {
+    background-image: url('../img/castle-wall.png');
+    background-size: contain;
+    height: inherit;
+    overflow: hidden;
+    position: relative;
+}
+
+.kingdom .floor {
+    background-image: url('../img/castle-floor.png');
+    background-size: contain;
+    background-position: bottom;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    height: 230px;
+    width: 100%;
+}
+
+.chandeliers {
+    width: 100%;
+    display: flex;
+    height: 250px;
+}
+
+.chandeliers img {
+    height: 100%;
+    width: auto;
+    margin: 0 auto;
+}
+
+.chandelier {
+    display: inline-flex;
+    width: 33.3%;
+}

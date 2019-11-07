@@ -1,0 +1,81 @@
+<html>
+<head>
+    <title>Friend or foe</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="assets/js/collider.js"></script>
+    <script src="assets/js/parallax.js"></script>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<div class="background-title">
+    <div class="title"><img src="assets/img/logo.png"></div>
+    <div class="layer-1"></div>
+    <div class="layer-2"></div>
+    <div class="layer-3"></div>
+</div>
+
+<div class="intro-text">
+    <p id="intro-text-p">
+    </p>
+
+</div>
+
+<div class="game">
+
+    <div class="kingdom">
+        <div class="floor"></div>
+        <div class="chandeliers">
+            <div class="chandelier"><img src="assets/img/chandelier.gif" alt=""/></div>
+            <div class="chandelier"><img src="assets/img/chandelier.gif" alt=""/></div>
+            <div class="chandelier"><img src="assets/img/chandelier.gif" alt=""/></div>
+        </div>
+    </div>
+
+</div>
+<script>
+    $(".game").prepend("<div id='hero' class='in-kingdom'>");
+
+    hero_anchor = $('#hero').offset().top - screen.height;
+    text_anchor = $('#intro-text-p').offset().top - screen.height;
+
+    $(window).on('scroll', function () {
+        if ($(window).scrollTop() > hero_anchor) {
+            $('#hero.in-kingdom').addClass("walking");
+        }
+    });
+
+    $(window).on('scroll.text', function () {
+        if ($(window).scrollTop() > text_anchor) {
+            typeName(text, 0);
+            $(window).off('scroll.text');
+        }
+    });
+
+
+    $('#hero').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function (e) {
+        $(this).addClass("idle");
+    });
+
+
+    //////
+
+    var text = "An evil enemy stole all the gold from your village... As a last resort, the king came to you, the retired village hero. He went all around the kingdom, but no fighter was as brave as you. Will you help him one last time?";
+
+    function typeName(text, iteration) {
+        // Prevent our code executing if there are no letters left
+        if (iteration === text.length) {
+            return;
+
+        }
+        setTimeout(function () {
+            // Set the name to the current text + the next character
+            // whilst incrementing the iteration variable
+            $('#intro-text-p').text($('#intro-text-p').text() + text[iteration++]);
+
+            // Re-trigger our function
+            typeName(text, iteration);
+        }, 75);
+    }
+</script>
+</body>
+</html>
