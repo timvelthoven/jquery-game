@@ -73,15 +73,15 @@
     function typeName(text, iteration) {
         if (iteration === text.length) {
             setTimeout(function () {
-                $('.intro-text').append("<button id='yes' >yes</button>");
-                $('.intro-text').append("<button id='no' >no</button>");
+                $('#intro-text-p').append("<button id='yes' >yes</button>");
+                $('#intro-text-p').append("<button id='no' >no</button>");
             }, 500);
             return;
         }
         setTimeout(function () {
             $('#intro-text-p').text($('#intro-text-p').text() + text[iteration++]);
             typeName(text, iteration);
-        }, 5);
+        }, 25);
     }
 </script>
 </body>
