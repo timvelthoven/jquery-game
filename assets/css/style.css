@@ -205,6 +205,17 @@ img {
     position: relative;
 }
 
+.game .kingdom .king {
+    background-image: url(../img/king_idle.gif);
+    background-size: contain;
+    position: absolute;
+    height: calc(343px / 1.6);
+    width: calc(168px / 1.6);
+    bottom: 200px;
+    left: 10%;
+    z-index: 9;
+}
+
 .kingdom .floor {
     background-image: url('../img/castle-floor.png');
     background-size: contain;

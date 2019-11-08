@@ -24,6 +24,7 @@
 <div class="game">
 
     <div class="kingdom">
+        <div class="king"></div>
         <div class="floor"></div>
         <div class="chandeliers">
             <div class="chandelier"><img src="assets/img/chandelier.gif" alt=""/></div>
@@ -35,17 +36,16 @@
 </div>
 <script>
     $(".game").prepend("<div id='hero' class='in-kingdom'>");
+
     var hero_anchor = $('#hero').offset().top - screen.height;
     var intro_anchor = $('.intro-scroll').height() - screen.height;
     var text_anchor = $('#intro-text-p').offset().top - screen.height;
 
-    console.log(intro_anchor)
-
-    $(window).scroll(function (e) {
-        if ($(window).scrollTop() >= intro_anchor) {
-            $(window).scrollTop(intro_anchor);
-        }
-    });
+    // $(window).scroll(function (e) {
+    //     if ($(window).scrollTop() >= intro_anchor) {
+    //         $(window).scrollTop(intro_anchor);
+    //     }
+    // });
 
     $(window).on('scroll', function () {
         if ($(window).scrollTop() > hero_anchor) {
