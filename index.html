@@ -75,13 +75,13 @@
             setTimeout(function () {
                 $('#intro-text-p').append("<button id='yes' >yes</button>");
                 $('#intro-text-p').append("<button id='no' >no</button>");
-            }, 500);
+            }, 1500);
             return;
         }
         setTimeout(function () {
             $('#intro-text-p').text($('#intro-text-p').text() + text[iteration++]);
             typeName(text, iteration);
-        }, 25);
+        }, 50);
     }
 </script>
 </body>
