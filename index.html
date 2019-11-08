@@ -33,14 +33,18 @@
 <script>
     $(".game").prepend("<div id='hero' class='in-kingdom'></div>");
 
-    var hero_anchor = $('#hero').offset().top - screen.height;
+    var hero_anchor = $('#hero').offset().top - screen.height + 100;
     var intro_anchor = $('.intro-scroll').height() - screen.height + 100;
-    var text_anchor = $('#intro-text-p').offset().top - screen.height;
+    var text_anchor = $('#intro-text-p').offset().top - screen.height + 100;
 
     $(window).on('scroll.togame', function () {
         if ($(window).scrollTop() >= intro_anchor) {
             $(window).scrollTop(intro_anchor);
         }
+        $("#yes").click(function () {
+            $("html").css("scroll-behavior", "smooth");
+            intro_anchor += intro_anchor
+        });
     });
 
     $(window).on('scroll', function () {
@@ -50,36 +54,32 @@
 
     $(window).on('scroll.text', function () {
         if ($(window).scrollTop() > text_anchor) {
-            typeName(text, 0);
+            typeText(text, 0);
             $(window).off('scroll.text');
         }
     });
 
-    
-    $("a#yes").click(function () {
-        $("html").css("scroll-behavior", "smooth");
-        intro_anchor += intro_anchor
-    });
 
     $('#hero').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function (e) {
         $(this).addClass("idle");
     });
 
+
     //////
 
     var text = "An evil enemy stole all the gold from your village... As a last resort, the king came to you, the retired village hero. He went all around the kingdom, but no fighter was as brave as you. Will you help him one last time?";
 
-    function typeName(text, iteration) {
+    function typeText(text, iteration) {
         if (iteration === text.length) {
             setTimeout(function () {
                 $('#intro-text-p').append("<a id='yes' href='#game'><button>yes</button></a>");
-                $('#intro-text-p').append("<button id='no' >no</button>");
+                $('#intro-text-p').append("<button id='no'>no</button>");
             }, 10);
             return;
         }
         setTimeout(function () {
             $('#intro-text-p').text($('#intro-text-p').text() + text[iteration++]);
-            typeName(text, iteration);
+            typeText(text, iteration);
         }, 5);
     }
 </script>
