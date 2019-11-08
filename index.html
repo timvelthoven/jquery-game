@@ -72,8 +72,10 @@
 
     function typeName(text, iteration) {
         if (iteration === text.length) {
-            $('.intro-text').append("<button id='yes' >yes</button>");
-            $('.intro-text').append("<button id='no' >no</button>");
+            setTimeout(function () {
+                $('.intro-text').append("<button id='yes' >yes</button>");
+                $('.intro-text').append("<button id='no' >no</button>");
+            }, 500);
             return;
         }
         setTimeout(function () {
