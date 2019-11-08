@@ -35,7 +35,7 @@
 
 </div>
 <script>
-    $(".game").prepend("<div id='hero' class='in-kingdom'>");
+    $(".game").prepend("<div id='hero' class='in-kingdom'></div>");
 
     var hero_anchor = $('#hero').offset().top - screen.height;
     var intro_anchor = $('.intro-scroll').height() - screen.height;
@@ -73,6 +73,8 @@
     function typeName(text, iteration) {
         if (iteration === text.length) {
             return;
+            $('#intro-text-p').append("<button id='yes' >yes</button>");
+            $('#intro-text-p').append("<button id='no' >no</button>");
         }
         setTimeout(function () {
             $('#intro-text-p').text($('#intro-text-p').text() + text[iteration++]);
