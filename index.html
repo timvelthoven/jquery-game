@@ -21,7 +21,7 @@
 
     </div>
 </div>
-<div class="game">
+<div id="game" class="game">
 
     <div class="kingdom">
         <div class="king"></div>
@@ -73,7 +73,7 @@
     function typeName(text, iteration) {
         if (iteration === text.length) {
             setTimeout(function () {
-                $('#intro-text-p').append("<button id='yes' >yes</button>");
+                $('#intro-text-p').append("<button href='#game' id='yes' >yes</button>");
                 $('#intro-text-p').append("<button id='no' >no</button>");
             }, 1500);
             return;
