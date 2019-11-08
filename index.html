@@ -2,8 +2,6 @@
 <head>
     <title>Friend or foe</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="assets/js/collider.js"></script>
-    <script src="assets/js/parallax.js"></script>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -14,7 +12,6 @@
         <div class="layer-2"></div>
         <div class="layer-3"></div>
     </div>
-
     <div class="intro-text">
         <p id="intro-text-p">
         </p>
@@ -22,7 +19,6 @@
     </div>
 </div>
 <div id="game" class="game">
-
     <div class="kingdom">
         <div class="king"></div>
         <div class="floor"></div>
@@ -38,19 +34,18 @@
     $(".game").prepend("<div id='hero' class='in-kingdom'></div>");
 
     var hero_anchor = $('#hero').offset().top - screen.height;
-    var intro_anchor = $('.intro-scroll').height() - screen.height;
+    var intro_anchor = $('.intro-scroll').height() - screen.height + 100;
     var text_anchor = $('#intro-text-p').offset().top - screen.height;
 
-    // $(window).scroll(function (e) {
-    //     if ($(window).scrollTop() >= intro_anchor) {
-    //         $(window).scrollTop(intro_anchor);
-    //     }
-    // });
+    $(window).on('scroll.togame', function () {
+        if ($(window).scrollTop() >= intro_anchor) {
+            $(window).scrollTop(intro_anchor);
+        }
+    });
 
     $(window).on('scroll', function () {
-        if ($(window).scrollTop() > hero_anchor) {
+        if ($(window).scrollTop() > hero_anchor)
             $('#hero.in-kingdom').addClass("walking");
-        }
     });
 
     $(window).on('scroll.text', function () {
@@ -60,11 +55,15 @@
         }
     });
 
+    
+    $("a#yes").click(function () {
+        $("html").css("scroll-behavior", "smooth");
+        intro_anchor += intro_anchor
+    });
 
     $('#hero').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function (e) {
         $(this).addClass("idle");
     });
-
 
     //////
 
@@ -73,15 +72,15 @@
     function typeName(text, iteration) {
         if (iteration === text.length) {
             setTimeout(function () {
-                $('#intro-text-p').append("<a href='#game'><button id='yes'>yes</button></a>");
+                $('#intro-text-p').append("<a id='yes' href='#game'><button>yes</button></a>");
                 $('#intro-text-p').append("<button id='no' >no</button>");
-            }, 1500);
+            }, 10);
             return;
         }
         setTimeout(function () {
             $('#intro-text-p').text($('#intro-text-p').text() + text[iteration++]);
             typeName(text, iteration);
-        }, 50);
+        }, 5);
     }
 </script>
 </body>
