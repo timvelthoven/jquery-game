@@ -1,0 +1,287 @@
+body {
+    margin: 0;
+    background-color: #ffff;
+    overflow: scroll;
+}
+
+
+header {
+    position: relative;
+    width: 100%;
+    height: 30vh;
+    background-color: #210002;
+    margin-bottom: 1000px;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.footer {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-background {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.footer .layer-1, .footer .layer-2 {
+    position: absolute;
+}
+
+.footer .layer-1 {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../img/cave_layer1.png");
+}
+
+.footer .layer-2 {
+    width: 100%;
+    height: 100vh;
+    background-image: url("../img/cave_layer2.png");
+}
+
+.footer .cave_floor {
+    background: url(../img/cave_floor.png);
+    background-size: contain;
+    background-position: bottom;
+    background-repeat-y: no-repeat;
+    width: 100%;
+    position: absolute;
+    height: 120px;
+    bottom: 0;
+    z-index: 999;
+}
+
+.ui-widget-content {
+    background: transparent;
+}
+
+.background-title .layer-1 {
+    background-image: url("../img/parallax-mountain-bg.png");
+}
+
+.background-title .layer-2 {
+    background-image: url("../img/parallax-mountain-montain-far.png");
+}
+
+.background-title .layer-3 {
+    background-image: url('../img/parallax-mountain-mountains.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.background-title .layer-4 {
+    background-image: url("../img/parallax-mountain-foreground-trees.png");
+}
+
+.background-title .layer-5 {
+
+    background-image: url("../img/parallax-mountain-trees.png");
+}
+
+.background-title .layer-4, .background-title .layer-5 {
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.underground {
+    position: relative;
+    background: #160805;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    z-index: 3;
+}
+
+.chest {
+    height: 77px;
+    position: absolute;
+    width: 95px;
+    background-image: url(../img/obj_chest.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    top: 720px;
+    z-index: 99999999;
+    left: 60%;
+}
+
+#hero {
+    background-image: url("../img/adventurer/adventurer_idle.gif");
+    position: absolute;
+    width: calc(350px / 1.5);
+    height: calc(259px / 1.5);
+    background-size: contain;
+    bottom: 90px;
+    z-index: 99999;
+    top: 70%;
+}
+
+#hero.walking.evil {
+    background-image: url(../img/enemy/enemy_idle.gif);
+    background-repeat: no-repeat;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+
+#hero.walking.idle {
+    background-image: url('../img/adventurer/adventurer_idle.gif');
+}
+
+#hero.walking {
+    background-image: url('../img/adventurer/adventurer_walking.gif');
+    animation: walk-left 10000ms forwards;
+    animation-delay: 500ms;
+    opacity: 0;
+}
+
+
+@-webkit-keyframes walk-left {
+    0% {
+        left: -200px;
+        opacity: 1;
+    }
+
+    100% {
+        left: 50%;
+        opacity: 1;
+    }
+}
+
+
+#disableScrollDiv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+#overlay {
+    background-color: #000000;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.ui-dialog-titlebar {
+    display: none;
+}
+
+.ui-widget.ui-widget-content {
+    border: none;
+    position: fixed !important;
+    width: 300px;
+    height: auto;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%);
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+    border: none;
+    margin: 0;
+    padding: 0;
+    margin-left: 139%;
+}
+
+.ui-dialog-buttonset {
+    margin-right: -5px;
+    white-space: nowrap;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+
+    border-width: 10px;
+    padding: 0 10px;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    font-size: 0.8em;
+    line-height: 22px;
+    border-style: solid;
+    border-image-source: url(border-image-golden2.png);
+    border-image-repeat: repeat;
+    border-image-slice: 8 8 8 8;
+    border-image-width: 18px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background: url(background-image-golden2.png) repeat repeat;
+    background-clip: padding-box;
+    background-origin: padding-box;
+    background-position: center;
+}
+
+#dialog1, #dialog2, #dialog3, #dialog4, #dialog5, #dialogGrabSword, #dialogEatMushroom {
+    display: none;
+    border-width: 15px;
+    padding: 12px;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    font-size: 0.8em;
+    line-height: 22px;
+    border-style: solid;
+    border-image-source: url(border-image-golden2.png);
+    border-image-repeat: repeat;
+    border-image-slice: 8 8 8 8;
+    border-image-width: 18px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background: url(background-image-golden2.png) repeat repeat;
+    background-clip: padding-box;
+    background-origin: padding-box;
+    background-position: center;
+    width: 442px;
+}
+
+/* NEW NEW NEW */
+
+
+.background-title {
+    position: relative;
+    background: url("../img/background.png");
+    height: 100vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.background-title .title {
+    position: absolute;
+    margin-top: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    z-index: 99;
+}
+
+.background-title .layer-1, .background-title .layer-2, .background-title .layer-3, .background-title .layer-4, .background-title .layer-5, .background-title .layer-6 {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-size: contain !important;
+
+}
+
+img {
+    width: 100%;
+}

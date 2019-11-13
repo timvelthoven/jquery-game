@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>GETTING STARTED WITH BRACKETS</title>
+    <meta name="description" content="An interactive getting started guide for Brackets.">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="assets/css/styles_cave.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+</head>
+<body>
+<div class="background-title">
+    <div class="title"><img src="assets/img/logo.png"></div>
+    <div class="layer-1"></div>
+    <div class="layer-2"></div>
+    <div class="layer-3"></div>
+    <div class="layer-4"></div>
+    <div class="layer-5"></div>
+
+</div>
+<div class="underground"></div>
+<div class="footer">
+    <div class="footer-background">
+        <div class="layer-1"></div>
+        <div class="layer-2"></div>
+    </div>
+    <div class="cave_floor"></div>
+    <div class="chest"></div>
+    <div id="hero"></div>
+
+    <div id="overlay"></div>
+
+    <div id="dialog5">
+        <p>You got the gold back. Let's return it! Or... keep it for ourselves?</p>
+    </div>
+
+    <div id="disableScrollDiv"></div>
+
+
+</div>
+<!--<script src="dialog.js"></script>-->
+<script>
+    // $(document).ready(function () {
+    //     $("html, body").animate({scrollTop: $(document).height()}, "slow");
+    // });
+
+    function scrollBottom() {
+        window.scrollTo(0, 99999);
+    }
+
+    if (document.addEventListener) document.addEventListener("DOMContentLoaded", scrollBottom, false)
+    else if (window.attachEvent) window.attachEvent("onload", scrollBottom);
+
+
+    $(window).scroll(function () {
+        var scrollTop = $(this).scrollTop();
+        $('.background-title .layer-1').css('top', +(scrollTop * 0.2));
+        $('.background-title .layer-2').css('top', +(scrollTop * 0.25));
+        $('.background-title .layer-3').css('top', +(scrollTop * 0.4));
+        $('.background-title .layer-4').css('top', +(scrollTop * 0.3));
+        $('.background-title .layer-5').css('top', +(scrollTop * 0.4));
+    });
+
+
+    var hero_anchor = $('#hero').offset().top - screen.height + 100;
+    $('#hero').addClass("in-cave");
+
+    $(window).on('scroll', function () {
+        if ($(window).scrollTop() > hero_anchor)
+            $('#hero').addClass("walking");
+    });
+
+    $('#hero').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function (e) {
+        $(this).addClass("idle");
+    });
+
+</script>
+</body>
+</html>
