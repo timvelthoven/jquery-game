@@ -171,34 +171,38 @@ img {
 }
 
 
-#hero.in-kingdom.walking.idle {
+#hero.walking.idle {
     background-image: url('../img/adventurer/adventurer_idle.gif');
 }
 
-#hero.in-kingdom.walking {
+#hero.walking {
     background-image: url('../img/adventurer/adventurer_walking.gif');
-    animation: walk 4000ms forwards;
+    animation: walk-right 4000ms forwards;
     animation-delay: 500ms;
-    right: -200px;
+    opacity: 0;
 }
 
-@-webkit-keyframes walk {
+@-webkit-keyframes walk-right {
     0% {
         right: -200px;
+        opacity: 1;
     }
 
     100% {
         right: 250px;
+        opacity: 1;
     }
 }
 
 @-webkit-keyframes walk-back {
     0% {
         right: 250px;
+        opacity: 1;
     }
 
     100% {
         right: -200px;
+        opacity: 1;
     }
 }
 
@@ -313,22 +317,21 @@ button:focus {
 }
 
 .ui-dialog-buttonset {
-    margin-right: -5px;
+    display: flex;
     white-space: nowrap;
 }
 
 .ui-dialog .ui-dialog-buttonpane button {
+    margin: 0;
     border-width: 10px;
-    padding: 0 10px;
+    flex: auto;
+    padding: 0 1rem;
     color: white;
-    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
-    font-size: 0.8em;
-    line-height: 22px;
     border-style: solid;
     border-image-source: url(../img/border-image-golden2.png);
     border-image-repeat: repeat;
     border-image-slice: 8 8 8 8;
-    border-image-width: 18px;
+    border-image-width: 11px;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
     -webkit-box-sizing: border-box;
