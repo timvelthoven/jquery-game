@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Credits</title>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            height: 2500px;
+            background-color: #000000;
+            color: #FFFFFF;
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1.2em;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+</head>
+<body>
+    <p>Loïs Berndsen</p>
+    <p>Jason Pichardo</p>
+    <p>Tim van Velthoven</p>
+</body>
+
+<script>
+
+    $("html, body").animate( {
+        scrollTop: $(document).height()
+    }, 13000);
+
+    window.setTimeout(function () {
+        window.location.href = "index.html";
+    }, 13000);
+
+</script>
+</html>

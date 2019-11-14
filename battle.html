@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Battle</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<audio src="audio/combat-music.mp4" id="combat-music" loop="loop"></audio>
+
+<div class="game battle">
+    <div class="background-container">
+        <div class="forest-header-bg"></div>
+        <div class="forest-header-bg2"></div>
+        <div class="forest-header-bg3"></div>
+        <div class="forest-header-bg4"></div>
+        <div class="forest-header-bg5"></div>
+        <div class="forest-header-bg6"></div>
+        <div class="forest-header-bg7"></div>
+        <div class="forest-header-bg8"></div>
+        <div class="forest-header-bg9"></div>
+    </div>
+</div>
+
+<img src="img/cave-background.png" class="cave-background">
+<img src="img/cave-foreground.png" class="cave-foreground" alt="">
+
+
+<div id="dialog4">
+    <p>Which attack do you want to use?</p>
+</div>
+
+<script src="script.js"></script>
+<script>
+    $(".game").append("<div class='adventurer-container'></div>");
+    $(".game").append("<div class='enemy-container'></div>");
+
+    $(".adventurer-container").prepend("<div class='health-bar-container'></div>");
+    $(".adventurer-container").append("<div class='adventurer battle'></div>");
+
+    $(".enemy-container").prepend("<div class='health-bar-container'></div>");
+    $(".enemy-container").append("<div class='enemy battle'></div>");
+
+    $(".health-bar-container").prepend("<img src='img/health_bar_decoration.png' class='health-bar-outline'>")
+    $(".health-bar-container").append("<img src='img/health_bar.png' class='health-bar'>")
+    $('.enemy-container .health-bar-container .health-bar').attr('id', 'enemy-health-bar');
+    $('.adventurer-container .health-bar-container .health-bar').attr('id', 'adventurer-health-bar');
+
+    $('.adventurer').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function (e) {
+        var checkHealthEnemy = $('.enemy').hasClass('attack')
+        $(this).removeClass("attack-punch");
+        $(this).removeClass("scream");
+        $(this).removeClass("attack");
+    });
+
+    $('.enemy').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function (e) {
+        $(this).removeClass("attack");
+
+    });
+
+</script>
+</body>
+</html>

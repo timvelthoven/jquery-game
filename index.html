@@ -1,12 +1,17 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Friend or foe</title>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="stylesheet-index.css">
+    <link rel="stylesheet" href="stylesheet.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
+<audio src="audio/medieval-music.mp4" id="medieval-music" loop="loop"></audio>
 
 <div id="overlay"></div>
 
@@ -15,6 +20,10 @@
         <div class="layer-1"></div>
         <div class="layer-2"></div>
         <div class="layer-3"></div>
+        <div class="layer-4"></div>
+        <div class="layer-5"></div>
+        <div class="layer-6"></div>
+        <img src="img/logo.png" id="logo">
     </div>
     <div class="intro-text">
         <p id="intro-text-p">
@@ -22,32 +31,36 @@
 
     </div>
 </div>
-<div id="game" class="game">
-    <div class="kingdom">
-        <div class="king"></div>
-        <div id="dialog1">
-            <p>So, what do you say? Will you help your kingdom one last time?</p>
-        </div>
-        <div class="floor"></div>
-        <div class="chandeliers">
-            <div class="chandelier"><img src="assets/img/chandelier.gif" alt=""/></div>
-            <div class="chandelier"><img src="assets/img/chandelier.gif" alt=""/></div>
-            <div class="chandelier"><img src="assets/img/chandelier.gif" alt=""/></div>
-        </div>
-    </div>
 
-</div>
 <script>
-    $(".game").prepend("<div id='hero' class='in-kingdom'></div>");
+    $('body').append("<div class='game' id='game'></div>");
+    $(".game").prepend("<div class='adventurer-container'></div>");
+    $(".game").prepend("<div class='kingdom'></div>");
+    $(".game .kingdom").prepend("<div class='king'></div>");
+    $(".game .kingdom").prepend("<div id='dialog1'><p>So, what do you say? Will you help your kingdom one last time?</p></div>");
+    $(".game .kingdom").prepend("<div class='floor'></div>");
+    $(".game .kingdom").prepend("<div class='chandeliers'></div>");
+    $(".game .kingdom .chandeliers").prepend("<div class='chandelier'><img src='img/chandelier.gif' alt=''/></div>");
+    $(".game .kingdom .chandeliers").prepend("<div class='chandelier'><img src='img/chandelier.gif' alt=''/></div>");
+    $(".game .kingdom .chandeliers").prepend("<div class='chandelier'><img src='img/chandelier.gif' alt=''/></div>");
 
-    var hero_anchor = $('#hero').offset().top - screen.height + 100;
+    $(".adventurer-container").append("<div class='adventurer in-kingdom'></div>");
+
+    $(window).click(function () {
+        $('#medieval-music')[0].play();
+    });
+
+
+    var hero_anchor = $('.adventurer').offset().top - screen.height + 100;
     var intro_anchor = $('.intro-scroll').height() - screen.height + 100;
     var text_anchor = $('#intro-text-p').offset().top - screen.height + 100;
 
     $(window).on('scroll.togame', function () {
+
         if ($(window).scrollTop() >= intro_anchor) {
             $(window).scrollTop(intro_anchor);
         }
+
         $("#yes").click(function () {
             $("html").css("scroll-behavior", "smooth");
             intro_anchor += intro_anchor
@@ -56,7 +69,7 @@
 
     $(window).on('scroll', function () {
         if ($(window).scrollTop() > hero_anchor)
-            $('#hero.in-kingdom').addClass("walking");
+            $('.adventurer.in-kingdom').addClass("walking");
     });
 
     $(window).on('scroll.text', function () {
@@ -66,24 +79,22 @@
         }
     });
 
-
-    $('#hero').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function (e) {
+    $('.adventurer').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function (e) {
         $(this).addClass("idle");
     });
 
-
     //////
-
     var text = "An evil enemy stole all the gold from your village... As a last resort, the king came to you, the retired village hero. He went all around the kingdom, but no fighter was as brave as you. Will you help him one last time?";
 
     function typeText(text, iteration) {
         if (iteration === text.length) {
             setTimeout(function () {
                 $('#intro-text-p').append("<a id='yes' href='#game'><button>yes</button></a>");
-                $('#intro-text-p').append("<button id='no'>no</button>");
+                $('#intro-text-p').append("<a id='no' href='credits.html'><button id='no'>no</button></a>");
             }, 10);
             return;
         }
+
         setTimeout(function () {
             $('#intro-text-p').text($('#intro-text-p').text() + text[iteration++]);
             typeText(text, iteration);
@@ -91,12 +102,10 @@
     }
 
     //////
-
     function disableBodyScrolling() {
         $('#disableScrollDiv').css({
             display: "block"
         });
-
         $('body').css({
             overflow: "hidden"
         });
@@ -106,7 +115,6 @@
         $('#disableScrollDiv').css({
             display: "hidden"
         });
-
         $('body').css({
             overflow: "auto"
         });
@@ -147,7 +155,6 @@
             open: disableBodyScrolling,
             close: enableBodyScrolling
         }).dialog("widget").find(".ui-dialog-title").hide();
-
         dialogsOpened.push(dialogNumber);
     }
 
@@ -159,7 +166,7 @@
     const dialogOneButtons = [
         createButton('Yes', function () {
             fadePage();
-            goToPage('cave/cave.html'); // todo
+            goToPage('battle.html');
         }),
         createButton('No', function () {
             fadePage();
@@ -167,10 +174,9 @@
         })
     ];
 
-    // Deze moeten nog aangepast worden o.b.v. functies onderaan (handmatig)
     const dialogs = [
         {
-            scrollPosition: 1576,
+            scrollPosition: 1575,
             id: 'dialog1',
             number: 1,
             buttons: dialogOneButtons
@@ -200,7 +206,8 @@
         const currentWidth = $(window).scrollLeft();
         checkScrollPosition(currentWidth);
     });
-
 </script>
+
+<script src="script.js"></script>
 </body>
 </html>

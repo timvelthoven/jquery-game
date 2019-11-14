@@ -1,0 +1,697 @@
+#disableScrollDiv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+#overlay {
+    background-color: #000000;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+/* width en height nog veranderen naar auto */
+body {
+    margin: 0;
+    width: auto;
+    height: auto;
+    overflow: scroll;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.ui-dialog-titlebar {
+    display: none;
+}
+
+.ui-widget.ui-widget-content {
+    border: none;
+    position: fixed !important;
+    width: 300px;
+    height: auto;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%);
+}
+
+.ui-widget.ui-widget-content.dialog4 {
+    top: 30% !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.ui-dialog-buttonset {
+    display: flex;
+    white-space: nowrap;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+    font-size: 1.25rem;
+    flex: auto;
+    border-width: 10px;
+    padding: 0 1rem;
+    color: white;
+    margin: 1rem 0 0;
+    border-style: solid;
+    border-image-source: url(img/border-image-golden2.png);
+    border-image-repeat: repeat;
+    border-image-slice: 8 8 8 8;
+    border-image-width: 12px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background: url(img/background-image-golden2.png) repeat repeat;
+    background-clip: padding-box;
+    background-origin: padding-box;
+    background-position: center;
+}
+
+#dialog1, #dialog2, #dialog3, #dialog4, #dialog5, #dialogGrabSword, #dialogEatMushroom {
+    display: none;
+    border-width: 15px;
+    padding: 1rem 0;
+    color: white;
+    font-size: 1.5rem;
+    text-align: center;
+    border-style: solid;
+    border-image-source: url('img/border-image-golden2.png');
+    border-image-repeat: repeat;
+    border-image-slice: 8 8 8 8;
+    border-image-width: 16px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background: url('img/background-image-golden2.png') repeat repeat;
+    background-clip: padding-box;
+    background-origin: padding-box;
+    background-position: center;
+}
+
+
+/* BATTLE */
+.cave-background {
+    position: absolute;
+    right: 0;
+    bottom: 84px;
+}
+
+.cave-foreground {
+    position: absolute;
+    right: 0;
+    bottom: 84px;
+}
+
+.forest-header-bg {
+    background-image: url("img/Layer_0010_1.png");
+}
+
+.forest-header-bg2 {
+    background-image: url("img/Layer_0009_2.png");
+}
+
+.forest-header-bg3 {
+    background-image: url("img/Layer_0008_3.png");
+}
+
+.forest-header-bg4 {
+    background-image: url("img/Layer_0006_4.png");
+}
+
+.forest-header-bg5 {
+    background-image: url("img/Layer_0005_5.png");
+}
+
+.forest-header-bg6 {
+    background-image: url("img/Layer_0003_6.png");
+}
+
+.forest-header-bg7 {
+    background-image: url("img/Layer_0002_7.png");
+
+}
+
+.forest-header-bg8 {
+    background-image: url("img/Layer_0001_8.png");
+}
+
+.forest-header-bg9 {
+    background-image: url("img/Layer_0000_9.png");
+    z-index: 9999999;
+}
+
+.adventurer {
+    position: relative;
+    width: calc(350px / 1.5);
+    height: calc(259px / 1.5);
+    background-size: contain;
+    background-image: url('img/adventurer_idle.gif');
+    z-index: 9;
+    bottom: 0;
+}
+
+.health-bar-outline {
+    width: 120px;
+}
+
+/* CAVE */
+.header {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #210002;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.cave {
+    height: 100vh;
+    top: -100vh;
+    display: block;
+    width: 100%;
+    position: relative;
+}
+
+.ui-widget-content {
+    background: transparent;
+}
+
+.pink-header-bg {
+    position: fixed;
+    width: 100%;
+    height: 300%;
+    background-image: url("img/parallax-mountain-bg.png");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100%;
+}
+
+.pink-header-bg2 {
+    position: fixed;
+    width: 100%;
+    height: 300%;
+    background-image: url("img/parallax-mountain-montain-far.png");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 100%;
+}
+
+.pink-header-bg3 {
+    position: fixed;
+    width: 100%;
+    height: 300%;
+    background-image: url("img/parallax-mountain-mountains.png");
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: 220%;
+}
+
+.pink-header-bg4 {
+    position: fixed;
+    width: 100%;
+    height: 180%;
+    background-image: url("img/parallax-mountain-trees.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.pink-header-bg5 {
+    position: fixed;
+    width: 100%;
+    height: 220%;
+    background-image: url("img/parallax-mountain-foreground-trees.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.pink-header-bg6 {
+    position: fixed;
+    width: 100%;
+    height: 230%;
+    background-image: url("img/parallax-mountain-foreground-trees.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-position-x: 100px;
+    background-size: 100%;
+}
+
+.transition-box {
+    position: fixed;
+    width: 100%;
+    height: 410%;
+    background-image: url("img/parallax-ground.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+}
+
+.underground {
+    position: relative;
+    background-image: url("img/Naamloos-1.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    z-index: 3;
+}
+
+.cave-bg {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-image: url(img/cave_bg.png);
+    background-size: cover;
+}
+
+.transition {
+    height: 200vh;
+    width: 100%;
+    background: rgb(34, 32, 51);
+    background: linear-gradient(0deg, rgba(34, 32, 51, 1) 0%, rgba(22, 9, 4, 1) 100%);
+}
+
+.cave-floor {
+    position: absolute;
+    width: 100%;
+    height: 20vh;
+    bottom: -60px;
+    background-image: url(img/cave_floor.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: bottom;
+}
+
+.chest {
+    position: absolute;
+    bottom: 95px;
+    left: 50%;
+    width: 95px;
+    height: 77px;
+    background-image: url(img/obj_chest.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.chest.open {
+    background-image: url(img/chest_open.gif);
+}
+
+.adventurer.walking.idle {
+    background-image: url('img/adventurer_idle.gif');
+}
+
+.adventurer.walking {
+    background-image: url('img/adventurer_walking.gif');
+    animation: walk-left 10000ms forwards;
+    animation-delay: 500ms;
+    opacity: 0;
+}
+
+.adventurer.in-cave.walking {
+    animation: walk-cave 10000ms forwards;
+}
+
+@-webkit-keyframes walk-cave {
+    0% {
+        margin-left: -50vw;
+        opacity: 1;
+    }
+
+    100% {
+        margin-left: 50%;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes walk-left {
+    0% {
+        left: -200px;
+        opacity: 1;
+    }
+
+    100% {
+        left: 50%;
+        opacity: 1;
+    }
+}
+
+.evilAdventurer {
+    position: fixed;
+    margin-top: 111%;
+    width: 85%;
+    height: 200vh;
+    background-image: url("img/enemy_idle.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    display: none;
+}
+
+body {
+    margin: 0;
+    background-color: #ffffff;
+}
+
+.cave-background {
+    position: absolute;
+    right: 0;
+    bottom: 84px;
+}
+
+.cave-foreground {
+    position: absolute;
+    right: 0;
+    bottom: 84px;
+}
+
+.background-container {
+    display: block;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    pointer-events: none;
+}
+
+.background-container div {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: bottom;
+    top: 0;
+}
+
+.layer-1 {
+    background-image: url("img/Layer_0010_1.png");
+}
+
+.layer-2 {
+    background-image: url("img/Layer_0009_2.png");
+}
+
+.layer-3 {
+    background-image: url("img/Layer_0008_3.png");
+}
+
+.layer-4 {
+    background-image: url("img/Layer_0006_4.png");
+}
+
+.layer-5 {
+    background-image: url("img/Layer_0005_5.png");
+}
+
+.layer-6 {
+    background-image: url("img/Layer_0003_6.png");
+}
+
+.layer-7 {
+    background-image: url("img/Layer_0002_7.png");
+}
+
+.layer-8 {
+    background-image: url("img/Layer_0001_8.png");
+}
+
+.layer-9 {
+    background-image: url("img/Layer_0000_9.png");
+    z-index: 99999999;
+}
+
+.game {
+    height: 100vh;
+    position: relative;
+}
+
+
+.adventurer.battle.attack-punch {
+    background-image: url('img/adventurer_attack_punch.gif');
+    animation: attack-adventurer 1400ms;
+    animation-iteration-count: 1;
+}
+
+.adventurer.battle.attack {
+    animation: attack-adventurer 1400ms;
+}
+
+.adventurer.battle.scream {
+    animation: attack-adventurer 1400ms;
+}
+
+.enemy.attack {
+    background-image: url('img/enemy_attack.gif');
+    animation: attack-enemy 1800ms;
+}
+
+.enemy.dead {
+    background-image: url(img/enemy_dead.gif);
+    width: calc(308px / 1.25);
+    height: calc(238px / 1.25);
+    background-repeat: no-repeat;
+    background-position: bottom;
+}
+
+@-webkit-keyframes attack-adventurer {
+    0% {
+        margin-left: 0;
+    }
+    50% {
+        margin-left: 75%;
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+
+@-webkit-keyframes attack-enemy {
+    0% {
+        margin-left: 0;
+    }
+    50% {
+        margin-left: -100%;
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+
+.enemy {
+    position: relative;
+    width: calc(231px / 1.25);
+    height: calc(252px / 1.25);
+    background-size: contain;
+    background-image: url('img/enemy_idle.gif');
+    z-index: 9;
+    top: 70%;
+}
+
+.adventurer-container {
+    position: absolute;
+    bottom: 90px;
+    z-index: 99999;
+    left: 35%
+}
+
+.enemy-container {
+    position: absolute;
+    bottom: 90px;
+    z-index: 99999;
+    right: 35%
+}
+
+
+.health-bar-container {
+    width: 120px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.health-bar {
+    height: calc(100% - 3px);
+    width: calc(100% - 28px);
+    position: absolute;
+    left: 26px;
+    transition: width .5s ease-in-out;
+}
+
+.health-bar-outline {
+    width: 120px;
+}
+
+.ui-widget-content {
+    background: transparent;
+}
+
+#disableScrollDiv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+#overlay {
+    background-color: #000000;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.ui-dialog-titlebar {
+    display: none;
+}
+
+.ui-widget.ui-widget-content {
+    border: none;
+    position: fixed !important;
+    width: 300px;
+    height: auto;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+}
+
+.dialog4 {
+    top: 30% !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+    border: none;
+    padding: 0;
+}
+
+.ui-dialog-buttonset {
+    margin-right: -5px;
+    white-space: nowrap;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+    border-width: 10px;
+    padding: 0 10px;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    font-size: 0.8em;
+    line-height: 22px;
+    border-style: solid;
+    border-image-source: url(img/border-image-golden2.png);
+    border-image-repeat: repeat;
+    border-image-slice: 8 8 8 8;
+    border-image-width: 18px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background: url(img/background-image-golden2.png) repeat repeat;
+    background-clip: padding-box;
+    background-origin: padding-box;
+    background-position: center;
+}
+
+#dialog1, #dialog2, #dialog3, #dialog4, #dialog5, #dialogGrabSword, #dialogEatMushroom {
+    display: none;
+    border-width: 15px;
+    padding: 12px;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    font-size: 0.8em;
+    line-height: 22px;
+    border-style: solid;
+    border-image-source: url(img/border-image-golden2.png);
+    border-image-repeat: repeat;
+    border-image-slice: 8 8 8 8;
+    border-image-width: 18px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background: url(img/background-image-golden2.png) repeat repeat;
+    background-clip: padding-box;
+    background-origin: padding-box;
+    background-position: center;
+    width: 442px;
+}
+
+
+.background-title {
+    position: relative;
+    background: url("../img/background.png");
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.background-title .title {
+    position: absolute;
+    margin-top: 4rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    z-index: 99;
+}
+
+.background-title div {
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    background-size: contain !important;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}
+
+.background-title .layer-1 {
+    background-image: url("img/mountain-bg.png");
+    background-position: inherit;
+}
+
+.background-title .layer-2 {
+    background-image: url("img/mountain-far.png");
+}
+
+.background-title .layer-3 {
+    background-image: url('img/mountains-bg.png');
+    background-repeat: no-repeat;
+}
+
+.background-title .layer-4 {
+    background-image: url("img/mountain-foreground-trees.png");
+}
+
+.background-title .layer-5 {
+
+    background-image: url("img/mountain-trees.png");
+}
+
+.background-title .layer-4, .background-title .layer-5 {
+    background-position: bottom;
+    background-repeat: no-repeat;
+}

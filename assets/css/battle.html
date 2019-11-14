@@ -1,0 +1,109 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Battle</title>
+    <meta name="description" content="An interactive getting started guide for Brackets.">
+    <link rel="stylesheet" href="battle.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&amp;display=swap" rel="stylesheet">
+</head>
+
+<body style="overflow: hidden;">
+<audio src="audio/combat-music.mp4" id="combat-music" loop="loop"></audio>
+
+<img src="img/cave-background.png" class="cave-background">
+
+<div class="game">
+    <div class="background-container">
+        <div class="layer-1"></div>
+        <div class="layer-2"></div>
+        <div class="layer-3"></div>
+        <div class="layer-4"></div>
+        <div class="layer-5"></div>
+        <div class="layer-6"></div>
+        <div class="layer-7"></div>
+        <div class="layer-8"></div>
+        <div class="layer-9"></div>
+    </div>
+
+
+    <script src="dialog.js"></script>
+    <script src="battle.js"></script>
+    <script>
+        $(".game").append("<div class='adventurer-container'></div>");
+        $(".game").append("<div class='enemy-container'></div>");
+
+        $(".adventurer-container").prepend("<div class='health-bar-container'></div>");
+        $(".adventurer-container").append("<div class='adventurer battle'></div>");
+
+        $(".enemy-container").prepend("<div class='health-bar-container'></div>");
+        $(".enemy-container").append("<div class='enemy battle'></div>");
+
+        $(".health-bar-container").prepend("<img src='img/health_bar_decoration.png' class='health-bar-outline'>")
+        $(".health-bar-container").append("<img src='img/health_bar.png' class='health-bar'>")
+        $('.enemy-container .health-bar-container .health-bar').attr('id', 'enemy-health-bar');
+        $('.adventurer-container .health-bar-container .health-bar').attr('id', 'adventurer-health-bar');
+
+        $('.adventurer').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function (e) {
+            $(this).removeClass("attack-punch");
+            $(this).removeClass("scream");
+            $(this).removeClass("attack");
+
+            $('.enemy').addClass("attack");
+        });
+
+        $('.enemy').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function (e) {
+            $(this).removeClass("attack");
+
+        });
+    </script>
+    <div class="adventurer-container">
+        <div class="health-bar-container"><img src="img/health_bar_decoration.png" class="health-bar-outline">
+            <img src="img/health_bar.png" class="health-bar" id="adventurer-health-bar" alt="">
+        </div>
+        <div class="adventurer battle"></div>
+    </div>
+    <div class="enemy-container">
+        <div class="health-bar-container"><img src="img/health_bar_decoration.png" class="health-bar-outline">
+            <img src="img/health_bar.png" class="health-bar" id="enemy-health-bar" alt="">
+        </div>
+        <div class="enemy battle"></div>
+    </div>
+
+</div>
+<div tabindex="-1" role="dialog"
+     class="ui-dialog ui-corner-all ui-widget ui-widget-content ui-front dialog4 ui-dialog-buttons ui-draggable ui-resizable"
+     aria-describedby="dialog4" aria-labelledby="ui-id-1"
+     style="position: fixed; height: auto; width: 300px; top: 451.5px; left: 840px;">
+    <div class="ui-dialog-titlebar ui-corner-all ui-widget-header ui-helper-clearfix ui-draggable-handle"><span
+            id="ui-id-1" class="ui-dialog-title" style="display: none;">&nbsp;</span>
+        <button type="button" class="ui-button ui-corner-all ui-widget ui-button-icon-only ui-dialog-titlebar-close"
+                title="Close"><span class="ui-button-icon ui-icon ui-icon-closethick"></span><span
+                class="ui-button-icon-space"> </span>Close
+        </button>
+    </div>
+    <div id="dialog4" class="ui-dialog-content ui-widget-content"
+         style="display: block; width: auto; min-height: 54px; max-height: none; height: auto;">
+        <p>Which attack do you want to use?</p>
+    </div>
+    <div class="ui-dialog-buttonpane ui-widget-content ui-helper-clearfix">
+        <div class="ui-dialog-buttonset">
+            <button type="button" class="ui-button ui-corner-all ui-widget">Use sword</button>
+            <button type="button" class="ui-button ui-corner-all ui-widget">Slap him</button>
+            <button type="button" class="ui-button ui-corner-all ui-widget">Scream at him</button>
+        </div>
+    </div>
+    <div class="ui-resizable-handle ui-resizable-n" style="z-index: 90;"></div>
+    <div class="ui-resizable-handle ui-resizable-e" style="z-index: 90;"></div>
+    <div class="ui-resizable-handle ui-resizable-s" style="z-index: 90;"></div>
+    <div class="ui-resizable-handle ui-resizable-w" style="z-index: 90;"></div>
+    <div class="ui-resizable-handle ui-resizable-se ui-icon ui-icon-gripsmall-diagonal-se" style="z-index: 90;"></div>
+    <div class="ui-resizable-handle ui-resizable-sw" style="z-index: 90;"></div>
+    <div class="ui-resizable-handle ui-resizable-ne" style="z-index: 90;"></div>
+    <div class="ui-resizable-handle ui-resizable-nw" style="z-index: 90;"></div>
+</div>
+</body>
+</html>

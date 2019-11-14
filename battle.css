@@ -1,0 +1,278 @@
+body {
+    margin: 0;
+    background-color: #ffffff;
+}
+
+.cave-background {
+    position: absolute;
+    right: 0;
+    bottom: 84px;
+}
+
+.cave-foreground {
+    position: absolute;
+    right: 0;
+    bottom: 84px;
+}
+
+.background-container {
+    display: block;
+    position: absolute;
+    height: 100vh;
+    width: 100%;
+    pointer-events: none;
+}
+
+.background-container div {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: bottom;
+    top: 0;
+}
+
+.layer-1 {
+    background-image: url("img/Layer_0010_1.png");
+}
+
+.layer-2 {
+    background-image: url("img/Layer_0009_2.png");
+}
+
+.layer-3 {
+    background-image: url("img/Layer_0008_3.png");
+}
+
+.layer-4 {
+    background-image: url("img/Layer_0006_4.png");
+}
+
+.layer-5 {
+    background-image: url("img/Layer_0005_5.png");
+}
+
+.layer-6 {
+    background-image: url("img/Layer_0003_6.png");
+}
+
+.layer-7 {
+    background-image: url("img/Layer_0002_7.png");
+}
+
+.layer-8 {
+    background-image: url("img/Layer_0001_8.png");
+}
+
+.layer-9 {
+    background-image: url("img/Layer_0000_9.png");
+    z-index: 99999999;
+}
+
+.game {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.adventurer {
+    position: relative;
+    width: calc(350px / 1.5);
+    height: calc(259px / 1.5);
+    background-size: contain;
+    background-image: url('img/adventurer_idle.gif');
+    z-index: 9;
+    top: 70%;
+}
+
+.adventurer.attack-punch {
+    background-image: url('img/adventurer_attack_punch.gif');
+    animation: attack-adventurer 1400ms;
+    animation-iteration-count: 1;
+}
+
+.adventurer.attack {
+    animation: attack-adventurer 1400ms;
+}
+
+.adventurer.scream {
+    animation: attack-adventurer 1400ms;
+}
+
+.enemy.attack {
+    animation: attack-enemy 1800ms;
+}
+
+@-webkit-keyframes attack-adventurer {
+    0% {
+        margin-left: 0;
+    }
+    50% {
+        margin-left: 75%;
+    }
+    100% {
+        margin-left: 0;
+    }
+}
+
+@-webkit-keyframes attack-enemy {
+    0% {
+        margin-left: 0;
+        background-image: url('img/enemy_attack.gif');
+    }
+    50% {
+        margin-left: -100%;
+        background-image: url('img/enemy_attack.gif');
+    }
+    100% {
+        margin-left: 0;
+        background-image: url('img/enemy_attack.gif');
+    }
+}
+
+.enemy {
+    position: relative;
+    width: calc(231px / 1.25);
+    height: calc(252px / 1.25);
+    background-size: contain;
+    background-image: url('img/enemy_idle.gif');
+    z-index: 9;
+    top: 70%;
+}
+
+.adventurer-container {
+    position: absolute;
+    bottom: 90px;
+    z-index: 99999;
+    left: 35%
+}
+
+.enemy-container {
+    position: absolute;
+    bottom: 90px;
+    z-index: 99999;
+    right: 35%
+}
+
+
+.health-bar-container {
+    width: 120px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+.health-bar {
+    height: calc(100% - 3px);
+    width: calc(100% - 28px);
+    position: absolute;
+    left: 26px;
+    transition: width .5s ease-in-out;
+}
+
+.health-bar-outline {
+    width: 120px;
+}
+
+.ui-widget-content {
+    background: transparent;
+}
+
+#disableScrollDiv {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9;
+    overflow: hidden;
+    background-color: transparent;
+}
+
+#overlay {
+    background-color: #000000;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+button:focus {
+    outline: 0;
+}
+
+.ui-dialog-titlebar {
+    display: none;
+}
+
+.ui-widget.ui-widget-content {
+    border: none;
+    position: fixed !important;
+    width: 300px;
+    height: auto;
+    left: 50% !important;
+    transform: translate(-50%, -50%);
+}
+
+.dialog4 {
+    top: 30% !important;
+}
+
+.ui-dialog .ui-dialog-buttonpane {
+    border: none;
+    padding: 0;
+}
+
+.ui-dialog-buttonset {
+    margin-right: -5px;
+    white-space: nowrap;
+}
+
+.ui-dialog .ui-dialog-buttonpane button {
+    border-width: 10px;
+    padding: 0 10px;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    font-size: 0.8em;
+    line-height: 22px;
+    border-style: solid;
+    border-image-source: url(img/border-image-golden2.png);
+    border-image-repeat: repeat;
+    border-image-slice: 8 8 8 8;
+    border-image-width: 18px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background: url(img/background-image-golden2.png) repeat repeat;
+    background-clip: padding-box;
+    background-origin: padding-box;
+    background-position: center;
+}
+
+#dialog1, #dialog2, #dialog3, #dialog4, #dialog5, #dialogGrabSword, #dialogEatMushroom {
+    display: none;
+    border-width: 15px;
+    padding: 12px;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+    font-size: 0.8em;
+    line-height: 22px;
+    border-style: solid;
+    border-image-source: url(img/border-image-golden2.png);
+    border-image-repeat: repeat;
+    border-image-slice: 8 8 8 8;
+    border-image-width: 18px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    background: url(img/background-image-golden2.png) repeat repeat;
+    background-clip: padding-box;
+    background-origin: padding-box;
+    background-position: center;
+    width: 442px;
+}

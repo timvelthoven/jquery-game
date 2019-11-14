@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Cave</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="stylesheet.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script>
+        $(window).scroll(function () {
+            var scrollTop = $(this).scrollTop();
+            $('.background-title .layer-1').css('top', +(scrollTop * 0.6));
+            $('.background-title .layer-2').css('top', +(scrollTop * 0.2));
+            $('.background-title .layer-3').css('top', +(scrollTop * 0.2));
+            $('.background-title .layer-4').css('top', +(scrollTop * 0.3));
+            $('.background-title .layer-5').css('top', +(scrollTop * 0.4));
+        });
+
+        function scrollBottom() {
+            window.scrollTo(0, 99999);
+        }
+
+        if (document.addEventListener) document.addEventListener("DOMContentLoaded", scrollBottom, false);
+        else if (window.attachEvent) window.attachEvent("onload", scrollBottom);
+    </script>
+
+</head>
+<body>
+<div class="game">
+
+</div>
+<div id="disableScrollDiv"></div>
+<div id="overlay"></div>
+
+<script src="script.js"></script>
+<script>
+    $(".game").append("<div class='background-title'></div>");
+    $(".game .background-title").append("<div class='layer-1'></div>");
+    $(".game .background-title").append("<div class='layer-2'></div>");
+    $(".game .background-title").append("<div class='layer-3'></div>");
+    $(".game .background-title").append("<div class='layer-4'></div>");
+    $(".game .background-title").append("<div class='layer-5'></div>");
+    $(".game").append("<div class='transition'></div>");
+    $(".game").append("<div class='cave'></div>");
+    $(".game .cave").append("<div class='cave-bg'></div>");
+    $(".game .cave").append("<div class='cave-floor'></div>");
+    $(".game .cave").append("<div class='chest'></div>");
+    $(".game .cave").append("<div id ='dialog5'><p>You got the gold back. Let's return it! Or... keep it for ourselves?</p></div>");
+    $(".game .cave").append("<div class='adventurer-container'></div>");
+    $(".adventurer-container").append("<div class='adventurer in-cave'></div>");
+
+    $('.adventurer.in-cave').addClass("walking");
+
+    $('.adventurer').bind('animationend webkitAnimationEnd oAnimationEnd MSAnimationEnd', function (e) {
+        $(this).addClass("idle");
+    });
+</script>
+</body>
+</html>
