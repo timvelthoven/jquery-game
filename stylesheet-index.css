@@ -48,31 +48,32 @@ p, span, h1, h2, h3, h4, a {
     background-repeat: no-repeat;
 }
 
-.background-title .layer-1 {
+.intro-scroll .background-title .layer-1 {
     background-image: url('img/intro/intro_mountains.png');
     background-position: bottom;
     z-index: 2;
 }
 
-.background-title .layer-2 {
+.intro-scroll .background-title .layer-2 {
     background-image: url('img/intro/intro_kingdom.png');
     z-index: 2;
+    background-position: left;
 }
 
-.background-title .layer-3 {
+.intro-scroll .background-title .layer-3 {
     background-image: url('img/intro/intro_floor.png');
     background-position: bottom;
     z-index: 9;
 }
 
-.background-title .layer-4 {
+.intro-scroll .background-title .layer-4 {
     background-image: url('img/intro/intro_house.png');
     background-position: bottom right;
     bottom: 75px;
     z-index: 5;
 }
 
-.background-title .layer-5 {
+.intro-scroll .background-title .layer-5 {
     background-image: url('img/intro/intro_lantern.png');
     height: 400px;
     bottom: 100px;
@@ -80,7 +81,7 @@ p, span, h1, h2, h3, h4, a {
     z-index: 99
 }
 
-.background-title .layer-6 {
+.intro-scroll .background-title .layer-6 {
     background-image: url('img/intro/intro_props.png');
     background-position: bottom right;
     height: 60vh;
@@ -204,12 +205,12 @@ img {
 
 @-webkit-keyframes walk-right {
     0% {
-        right: -200px;
+        margin-left: 500px;
         opacity: 1;
     }
 
     100% {
-        right: 250px;
+        margin-left: 0;
         opacity: 1;
     }
 }

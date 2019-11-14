@@ -350,6 +350,32 @@ button:focus {
     }
 }
 
+
+@-webkit-keyframes walk-right {
+    0% {
+        margin-left: 500px;
+        opacity: 1;
+    }
+
+    100% {
+        margin-left: 0;
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes walk-back {
+    0% {
+        right: 250px;
+        opacity: 1;
+    }
+
+    100% {
+        right: -200px;
+        opacity: 1;
+    }
+}
+
+
 .evilAdventurer {
     position: fixed;
     margin-top: 111%;
@@ -439,6 +465,9 @@ body {
     position: relative;
 }
 
+.game.kingdom .adventurer-container {
+    left: 75vw;
+}
 
 .adventurer.battle.attack-punch {
     background-image: url('img/adventurer_attack_punch.gif');
